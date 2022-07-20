@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(58, 58, 58);
+    color: white;
+}
+
+h1 {
+    animation: headline;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+h4 {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+}
+
+button {
+    color: white;
+    min-width: 10vw;
+    background-color: rgb(58, 58, 58);
+    border: 2px solid white;
+    border-radius: 50px;
+}
+
+#rounds {
+    display: inline-flex;
+    flex-direction: column;
+    border: 3px solid #ff3aad;
+    border-radius: 5px;
+}
+
+#decision {
+    display: flex;
+    flex-direction: column;
+}
+
+/* #decision img {
+    max-width: 5vw;
+    object-fit: cover;
+} */
+
+#schere {
+    transform: rotate(90deg);
+}
+
+#reset {
+    background-color: rgb(58, 58, 58);
+    border: none;
+    text-decoration: underline;
+}
+
+#totalResult, #roundNowTotal {
+    display: flex;
+}
+
+#totalResult p, #roundNowTotal p {
+    padding-right: 0.5rem;
+}
+
+/* Animation Headline */
+
+@keyframes headline {
+    0%, 40%, 60%, 100% {
+        text-shadow: white 0 0 12px, #ff3aad 0 0 24px, #ff3aad 0 0 36px;
+    }
+
+    40%, 60% {
+        text-shadow: none;
+    }
+}

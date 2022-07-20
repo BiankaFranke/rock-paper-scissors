@@ -4,10 +4,98 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scissors Stone Paper</title>
+    <title>Rock, Paper, Scissors</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
+    <main>
+      <header>
+        <h1>Rock Paper Scissors</h1>
+      </header>
+
+      <section id="rounds">
+        <h2>how many rounds?</h2>
+        <div>
+          <form>
+            <div id="roundsPartOne">
+              <input
+                type="radio"
+                id="rounds5"
+                name="quantityRounds"
+                value="5"
+              />
+              <label for="roundsFive">5</label>
+              <input
+                type="radio"
+                id="rounds10"
+                name="quantityRounds"
+                value="10"
+              />
+              <label for="roundsTen">10</label>
+              <input
+                type="radio"
+                id="rounds15"
+                name="quantityRounds"
+                value="15"
+              />
+              <label for="roundsFifthteen">15</label>
+              <input
+                type="radio"
+                id="rounds20"
+                name="quantityRounds"
+                value="20"
+              />
+              <label for="roundsTwenty">20</label>
+
+              <input type="submit" value="ready?" id="ready" />
+            </div>
+
+            <div id="roundNowTotal">
+              <p id="roundNow"></p>
+              <p>/</p>
+              <p id="roundTotal"></p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="result">
+        <div id="totalResult">
+          <p id="resultUser">0</p>
+          <p id="doppelpunkt">:</p>
+          <p id="resultComp">0</p>
+        </div>
+      </section>
+
+      <section id="decision">
+        <h3>Let's play</h3>
+        <div>
+          <button class="btn" id="stone">
+            Stein
+            <!-- <img src="./assets/img/stone.jpg" id="stein" alt="Stonehand" /> -->
+          </button>
+          <button class="btn" id="paper">
+            Papier
+            <!-- <img src="./assets/img/paper.jpg" id="papier" alt="Paperhand" /> -->
+          </button>
+          <button cass="btn" id="scissor">
+            Schere
+            <!-- <img
+              src="./assets/img/scissor.jpg"
+              id="schere"
+              alt="Scissorshand"
+            /> -->
+          </button>
+        </div>
+        <h4>Make your move</h4>
+      </section>
+    </main>
+
+    <footer>
+      <form>
+        <input type="reset" id="reset" value="restart" />
+      </form>
+    </footer>
     <script src="./assets/js/main.js"></script>
   </body>
 </html>

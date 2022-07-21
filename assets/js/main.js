@@ -1,67 +1,202 @@
 // JS Check
 console.log('it works');
 
-// Deklarieren
-let options = ['paper', 'rock', 'scissors'];
+// Declaration
+let roundsNow = 0;
 let resultUser = 0;
-let resultUserInput = document.querySelector('#resultUser');
 let resultComp = 0;
+let userChoice;
+let computerChoice;
+const roundsFiveNumber = 5;
+const roundsTenNumber = 10;
+const roundsFifthteenNumber = 15;
+const roundsTwentyNumber = 20;
+let options = ['paper', 'rock', 'scissor'];
+let resultUserInput = document.querySelector('#resultUser');
 let resultCompInput = document.querySelector('#resultComp');
 let roundNowInput = document.querySelector("#roundNow"); 
-let roundTotalInput = document.querySelector("#roundTotal");
-let computerChoice = Math.round(Math.random() * 2);
+let roundTotalInput = document.querySelector("#roundsTotal");
+let whoWinTheRoundInput = document.querySelector("#whoWinTheRound");
+const rock = document.querySelector("#btn1");
+const paper = document.querySelector("#btn2");
+const scissor = document.querySelector("#btn3");
+// let randomChoice = Math.floor(Math.random() * 3);
 
-let stonePaperScissors = (event) => {
-    event.preventDefault();
+// Game Rules - Who will win? -> Objects
+let rules = [
+    {
+        choice: 'rock',
+        draw: 'rock',
+        beats: 'scissors'
+    },
+    {
+        choice: 'paper',
+        draw: 'paper',
+        beats: 'rock'
+    },
+    {
+        choice: 'scissors',
+        draw: 'scissors',
+        beats: 'paper'
+    }
+];
 
-    let roundsNow = 0;
+// Game Trigger
+rock.addEventListener('click', () => {
+    roundCheck();
+    userChoice = 'rock'
+    computerChoice = options[Math.floor(Math.random() * 3)];
+    console.log(computerChoice);
+    check(total);
+});
+
+paper.addEventListener('click', () => {
+    roundCheck();
+    console.log(total);
+    userChoice = 'paper';
+    computerChoice = options[Math.floor(Math.random() * 3)];
+    console.log(computerChoice);
+    check(total);
+});
+
+scissor.addEventListener('click', () => {
+    roundCheck();
+    userChoice = 'scissors';
+    computerChoice = options[Math.floor(Math.random() * 3)];
+    console.log(computerChoice);
+    check(total);
+});
+
+
+// Check - how high is the round limit
+let roundCheck = () => {
     let roundsFive = document.querySelector("#rounds5").checked;
     let roundsTen = document.querySelector("#rounds10").checked;
     let roundsFifthteen = document.querySelector("#rounds15").checked;
-    let roundsTwenty = document.querySelector("#rounds20").checked;  
+    let roundsTwenty = document.querySelector("#rounds20").checked;
+    let roundsNow = 0;
 
     if (roundsFive == true) {
-        // console.log('5 Runden');
-        roundNowInput.innerText = roundsNow;
-        roundTotalInput.innerText = 5;
+        total = roundsFiveNumber;
     } else if (roundsTen == true) {
-        // console.log('10 Runden');
-        roundNowInput.innerText = roundsNow;
-        roundTotalInput.innerText = 10;
+        total = roundsTenNumber;
     } else if (roundsFifthteen == true) {
-        // console.log('15 Runden');
-        roundNowInput.innerText = roundsNow;
-        roundTotalInput.innerText = 15;
+        total = roundsFifthteenNumber;
     } else if (roundsTwenty == true) {
-        // console.log('20 Runden');
-        roundNowInput.innerText = roundsNow;
-        roundTotalInput.innerText = 20;
+        total = roundsTwentyNumber;
     } else {
-        window.alert('Bitte wähle eine Anzahl aus.');
+        window.alert('Please choose a round limit');
     };
 
+    roundNowInput.innerText = roundsNow;
+    roundTotalInput.innerText = total;
 
-    let computer = options[computerChoice];
-    console.log(computer);
+    return {
+        'total': total, 
+        'roundsNow': roundsNow,
+    }
+};
 
-}
+// Check if limit is reached
+let roundLimit = (roundsNow, total, resultUser, resultComp) => {
+    if (roundsNow < total) {
+        roundsNow +=1;
+        console.log('...Next round...');
+    } else {
+        console.log('...Game Over...');
+        winner(resultUser, resultComp);
+    }
+};
 
-document.querySelector("#ready").addEventListener("click", stonePaperScissors);
+let winner = (resultUser, resultComp) => {
+    console.log(resultUser, resultComp)
+    if (resultComp < resultUser) {
+        console.log('Total Winner -> User');
+        document.getElementById("win").style.display = "block";
+    } else if (resultComp > resultUser) {
+        console.log('Total Winner -> Computer');
+        document.getElementById("lose").style.display = "block";
+    } else {
+        console.log('Draw');
+        document.getElementById("draw").style.display = "block";
+    }
+};
 
+// Function to check who wins the game round, 
+let check = (total) => {
+    if (userChoice === computerChoice) {
+        resultUserInput.innerText = resultUser;
+        resultCompInput.innerText = resultComp;
+        whoWinTheRoundInput.innerText = `It was a draw! You both chose ${userChoice}`;
+        roundsNow += 1;
+        roundNowInput.innerText = roundsNow;
+        roundLimit(roundsNow, total);
+    }
+    if ((rules[0].choice === userChoice) && (rules[0].beats === computerChoice)){
+            resultUser += 1;
+            resultUserInput.innerText = resultUser;
+            resultCompInput.innerText = resultComp;
+            whoWinTheRoundInput.innerText = `${userChoice} (user) beats ${computerChoice} (comp). You win!`;
+            roundsNow += 1;
+            roundNowInput.innerText = roundsNow;
+            roundLimit(roundsNow, total);
+    }
+    if ((rules[0].choice === computerChoice) && (rules[0].beats === userChoice
+        )){
+            resultComp += 1;
+            resultUserInput.innerText = resultUser;
+            resultCompInput.innerText = resultComp;
+            whoWinTheRoundInput.innerText = `${computerChoice} (comp) beats ${userChoice} (user). You lose!`;
+            roundsNow += 1;
+            roundNowInput.innerText = roundsNow;
+            roundLimit(roundsNow, total);
+    }
+    if ((rules[1].choice === userChoice) && (rules[1].beats === computerChoice)){
+            resultUser +=1;
+            resultUserInput.innerText = resultUser;
+            resultCompInput.innerText = resultComp;
+            whoWinTheRoundInput.innerText = `${userChoice} (user) beats ${computerChoice} (comp). You win!`;
+            roundsNow += 1;
+            roundNowInput.innerText = roundsNow;
+            roundLimit(roundsNow, total);
+    }
+    if ((rules[1].choice === computerChoice) && (rules[1].beats === userChoice
+        )){
+            resultComp +=1;
+            resultUserInput.innerText = resultUser;
+            resultCompInput.innerText = resultComp;
+            whoWinTheRoundInput.innerText = `${computerChoice} (comp) beats ${userChoice} (user). You lose!`;
+            roundsNow += 1;
+            roundNowInput.innerText = roundsNow;
+            roundLimit(roundsNow, total);
+    }
+    if ((rules[2].choice === userChoice) && (rules[2].beats === computerChoice)){
+            resultUser += 1;
+            resultUserInput.innerText = resultUser;
+            resultCompInput.innerText = resultComp;
+            whoWinTheRoundInput.innerText = `${userChoice} (user) beats ${computerChoice} (comp). You win!`;
+            roundsNow += 1;
+            roundNowInput.innerText = roundsNow;
+            roundLimit(roundsNow, total);
+    }
+    if ((rules[2].choice === computerChoice) && (rules[2].beats === userChoice
+        )){
+            resultComp += 1;
+            resultUserInput.innerText = resultUser;
+            resultCompInput.innerText = resultComp;
+            whoWinTheRoundInput.innerText = `${computerChoice} (comp) beats ${userChoice} (user). You lose!`;
+            roundsNow += 1;
+            roundNowInput.innerText = roundsNow;
+            roundLimit(roundsNow, total);
+    }
 
+    return {
+        'resultUser': resultUser, 
+        'resultComp': resultComp,
+    }
+};
 
-
-// Reset Website
-
-// let restart = () => {
-//     location.reload(true);
-// };
-
-
-
-// // --> user selects one of the buttons --> add event listener so that it is registered when a button is pressed and which one it is 
-// // --> create two arrays, one containing the user selection buttons, the other containing the computer selection options
-// //--> computer selects random number 0-2 --> has to be rounded -->this number picks the object with the corresponding index in the computer selection array
-// // --> if statements to determine who wins based on each scenario 
-// //select rounds from radio buttons to say how many times the game can be played before the game will end and reset 
-// //reset button sets everything to default and starts new game from the beginning again
+// Reload the website
+reset.addEventListener("click", () => {
+    document.location.reload();
+  });

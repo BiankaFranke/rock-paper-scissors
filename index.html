@@ -46,55 +46,47 @@
                 value="20"
               />
               <label for="roundsTwenty">20</label>
-
-              <input type="submit" value="ready?" id="ready" />
-            </div>
-
-            <div id="roundNowTotal">
-              <p id="roundNow"></p>
-              <p>/</p>
-              <p id="roundTotal"></p>
             </div>
           </form>
         </div>
+
+        <div>
+          <div id="roundNowTotal">
+            <p id="roundNow"></p>
+            <p id="doppelpunkt">/</p>
+            <p id="roundsTotal"></p>
+          </div>
+        <div>
       </section>
 
       <section id="result">
-        <div id="totalResult">
-          <p id="resultUser">0</p>
+        <div id="totalResult" >
+          <p id="inputResult"></p>
+          <p id="resultUser"></p>
           <p id="doppelpunkt">:</p>
-          <p id="resultComp">0</p>
+          <p id="resultComp"></p>
         </div>
       </section>
 
       <section id="decision">
-        <h3>Let's play</h3>
-        <div>
-          <button class="btn" id="stone">
-            Stein
-            <!-- <img src="./assets/img/stone.jpg" id="stein" alt="Stonehand" /> -->
-          </button>
-          <button class="btn" id="paper">
-            Papier
-            <!-- <img src="./assets/img/paper.jpg" id="papier" alt="Paperhand" /> -->
-          </button>
-          <button cass="btn" id="scissor">
-            Schere
-            <!-- <img
-              src="./assets/img/scissor.jpg"
-              id="schere"
-              alt="Scissorshand"
-            /> -->
-          </button>
+        <h3 id="whoWinTheRound">Let's play</h3>
+        <div id="buttonChoice">
+          <button id="btn1" value="rock">✊🏼</button>
+          <button id="btn2" value="paper">✋🏼</button>
+          <button id="btn3" value="scissor">✌🏼</button>
         </div>
         <h4>Make your move</h4>
+      </section>
+
+      <section id="bannerResult">
+        <p id="win" class="banner">You Win!</p>
+        <p id="lose" class="banner">You Lose!</p>
+        <p id="draw" class="banner">It was a draw!</p>
       </section>
     </main>
 
     <footer>
-      <form>
-        <input type="reset" id="reset" value="restart" />
-      </form>
+        <button id="reset"/>restart</button>
     </footer>
     <script src="./assets/js/main.js"></script>
   </body>

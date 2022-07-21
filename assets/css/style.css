@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
 * {
     margin: 0;
@@ -10,25 +12,32 @@ html {
     font-family: 'Roboto', sans-serif;
     background-color: rgb(58, 58, 58);
     color: white;
+    text-align: center;
 }
 
 h1 {
+    font-family: 'Rock Salt', sans-serif;
+    font-size: 4rem;
     animation: headline;
     animation-duration: 5s;
     animation-iteration-count: infinite;
+    margin-bottom: 3rem;
 }
 
 h4 {
     text-transform: uppercase;
     letter-spacing: 0.2rem;
+    color: #ff3aad;
 }
 
 button {
     color: white;
-    min-width: 10vw;
+    font-size: 5rem;
     background-color: rgb(58, 58, 58);
-    border: 2px solid white;
-    border-radius: 50px;
+    border: none;
+    /* animation: box-shadow;
+    animation-duration: 5s;
+    animation-iteration-count: infinite; */
 }
 
 #rounds {
@@ -43,16 +52,12 @@ button {
     flex-direction: column;
 }
 
-/* #decision img {
-    max-width: 5vw;
-    object-fit: cover;
-} */
-
-#schere {
-    transform: rotate(90deg);
+#decision h4 {
+    margin: 2rem 0rem;
 }
 
 #reset {
+    font-size: 0.8rem;
     background-color: rgb(58, 58, 58);
     border: none;
     text-decoration: underline;
@@ -60,10 +65,44 @@ button {
 
 #totalResult, #roundNowTotal {
     display: flex;
+    justify-content: center;
+    font-family: 'Orbitron';
+    color: #ff3aad;
+    font-size: 6rem;
 }
 
 #totalResult p, #roundNowTotal p {
     padding-right: 0.5rem;
+}
+
+/* Banner for Winning or losing */
+
+#bannerSec {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    height: 20vh;
+    width: 100vw;
+    background: rgba(195, 25, 93);
+    transform: translateY(-20vh);
+}
+
+.banner{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    height: 20vh;
+    width: 100vw;
+    background: rgba(195, 25, 93);
+    transform: translateY(-20vh);
+}
+
+#win, #lose, #draw {
+    display: none;
 }
 
 /* Animation Headline */
@@ -77,3 +116,13 @@ button {
         text-shadow: none;
     }
 }
+
+/* @keyframes box-shadow {
+    0%, 40%, 60%, 100% {
+        box-shadow: white 0 0 12px, #ff3aad 0 0 5px, #ff3aad 0 0 10px;
+    }
+
+    40%, 60% {
+        box-shadow: none;
+    }
+} */

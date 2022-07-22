@@ -20,7 +20,7 @@ let whoWinTheRoundInput = document.querySelector("#whoWinTheRound");
 const rock = document.querySelector("#btn1");
 const paper = document.querySelector("#btn2");
 const scissor = document.querySelector("#btn3");
-// let randomChoice = Math.floor(Math.random() * 3);
+// let randomChoice = Math.floor(Math.random() * 3); 
 
 // Game Rules - Who will win? -> Objects
 let rules = [
@@ -41,39 +41,43 @@ let rules = [
     }
 ];
 
-// Game Trigger
-rock.addEventListener('click', () => {
+// Start the game
+begin.addEventListener("click", (event) => {
+    event.preventDefault();
     roundCheck();
+    document.querySelector("#roundsPartOne").style.display = "none";
+    document.querySelector("#begin").style.display = "none";
+    document.querySelector("#slash").style.display = "block";
+    document.querySelector("#doppelpunkt").style.display = "block";
+    document.querySelector("#resultUser").style.display = "block";
+    document.querySelector("#resultComp").style.display = "block";
+});
+
+// Game Options
+rock.addEventListener('click', () => {
     userChoice = 'rock'
     computerChoice = options[Math.floor(Math.random() * 3)];
-    console.log(computerChoice);
     check(total);
 });
 
 paper.addEventListener('click', () => {
-    roundCheck();
-    console.log(total);
     userChoice = 'paper';
     computerChoice = options[Math.floor(Math.random() * 3)];
-    console.log(computerChoice);
     check(total);
 });
 
 scissor.addEventListener('click', () => {
-    roundCheck();
     userChoice = 'scissors';
     computerChoice = options[Math.floor(Math.random() * 3)];
-    console.log(computerChoice);
     check(total);
 });
 
-
 // Check - how high is the round limit
 let roundCheck = () => {
-    let roundsFive = document.querySelector("#rounds5").checked;
-    let roundsTen = document.querySelector("#rounds10").checked;
-    let roundsFifthteen = document.querySelector("#rounds15").checked;
-    let roundsTwenty = document.querySelector("#rounds20").checked;
+    let roundsFive = document.querySelector("#roundsFive").checked;
+    let roundsTen = document.querySelector("#roundsTen").checked;
+    let roundsFifthteen = document.querySelector("#roundsFifthteen").checked;
+    let roundsTwenty = document.querySelector("#roundsTwenty").checked;
     let roundsNow = 0;
 
     if (roundsFive == true) {
@@ -104,12 +108,12 @@ let roundLimit = (roundsNow, total, resultUser, resultComp) => {
         console.log('...Next round...');
     } else {
         console.log('...Game Over...');
+        document.getElementById("end").style.display = "block";
         winner(resultUser, resultComp);
     }
 };
 
 let winner = (resultUser, resultComp) => {
-    console.log(resultUser, resultComp)
     if (resultComp < resultUser) {
         console.log('Total Winner -> User');
         document.getElementById("win").style.display = "block";
@@ -200,3 +204,7 @@ let check = (total) => {
 reset.addEventListener("click", () => {
     document.location.reload();
   });
+
+resetTwo.addEventListener("click", () => {
+    document.location.reload();
+});

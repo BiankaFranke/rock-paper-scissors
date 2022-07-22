@@ -19,7 +19,7 @@ h1 {
     font-family: 'Rock Salt', sans-serif;
     font-size: 4rem;
     animation: headline;
-    animation-duration: 5s;
+    animation-duration: 2s;
     animation-iteration-count: infinite;
     margin-bottom: 3rem;
 }
@@ -31,13 +31,28 @@ h4 {
 }
 
 button {
+    cursor: pointer;
+}
+
+.optionBtn {
     color: white;
-    font-size: 5rem;
     background-color: rgb(58, 58, 58);
     border: none;
-    /* animation: box-shadow;
-    animation-duration: 5s;
-    animation-iteration-count: infinite; */
+    font-size: 10rem;
+}
+
+input[type=radio] {
+    cursor: pointer;
+}
+
+#begin {
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    animation: boxshadow;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
 }
 
 #rounds {
@@ -76,7 +91,6 @@ button {
 }
 
 /* Banner for Winning or losing */
-
 #bannerSec {
     position: absolute;
     display: flex;
@@ -101,12 +115,11 @@ button {
     transform: translateY(-20vh);
 }
 
-#win, #lose, #draw {
+#win, #lose, #draw, #end, #doppelpunkt, #slash, #resultComp, #resultUser {
     display: none;
 }
 
-/* Animation Headline */
-
+/* Animation Headline and Box */
 @keyframes headline {
     0%, 40%, 60%, 100% {
         text-shadow: white 0 0 12px, #ff3aad 0 0 24px, #ff3aad 0 0 36px;
@@ -117,12 +130,12 @@ button {
     }
 }
 
-/* @keyframes box-shadow {
+@keyframes boxshadow {
     0%, 40%, 60%, 100% {
-        box-shadow: white 0 0 12px, #ff3aad 0 0 5px, #ff3aad 0 0 10px;
+        box-shadow: white 0 0 12px, #ff3aad 0 0 24px, #ff3aad 0 0 36px;
     }
 
     40%, 60% {
         box-shadow: none;
     }
-} */
+}

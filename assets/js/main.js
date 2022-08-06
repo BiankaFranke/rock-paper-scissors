@@ -41,37 +41,6 @@ let rules = [
     }
 ];
 
-// Start the game
-begin.addEventListener("click", (event) => {
-    event.preventDefault();
-    roundCheck();
-    document.querySelector("#roundsPartOne").style.display = "none";
-    document.querySelector("#begin").style.display = "none";
-    document.querySelector("#slash").style.display = "block";
-    document.querySelector("#doppelpunkt").style.display = "block";
-    document.querySelector("#resultUser").style.display = "block";
-    document.querySelector("#resultComp").style.display = "block";
-});
-
-// Game Options
-rock.addEventListener('click', () => {
-    userChoice = 'rock'
-    computerChoice = options[Math.floor(Math.random() * 3)];
-    check(total);
-});
-
-paper.addEventListener('click', () => {
-    userChoice = 'paper';
-    computerChoice = options[Math.floor(Math.random() * 3)];
-    check(total);
-});
-
-scissor.addEventListener('click', () => {
-    userChoice = 'scissors';
-    computerChoice = options[Math.floor(Math.random() * 3)];
-    check(total);
-});
-
 // Check - how high is the round limit
 let roundCheck = () => {
     let roundsFive = document.querySelector("#roundsFive").checked;
@@ -101,6 +70,18 @@ let roundCheck = () => {
     }
 };
 
+// Start the game
+begin.addEventListener("click", (event) => {
+    event.preventDefault();
+    roundCheck();
+    document.querySelector("#roundsPartOne").style.display = "none";
+    document.querySelector("#begin").style.display = "none";
+    document.querySelector("#slash").style.display = "block";
+    document.querySelector("#doppelpunkt").style.display = "block";
+    document.querySelector("#resultUser").style.display = "block";
+    document.querySelector("#resultComp").style.display = "block";
+});
+
 // Check if limit is reached
 let roundLimit = (roundsNow, total, resultUser, resultComp) => {
     if (roundsNow < total) {
@@ -108,25 +89,12 @@ let roundLimit = (roundsNow, total, resultUser, resultComp) => {
         console.log('...Next round...');
     } else {
         console.log('...Game Over...');
-        document.getElementById("end").style.display = "block";
+        document.querySelector("#end").style.display = "block";
         winner(resultUser, resultComp);
     }
 };
 
-let winner = (resultUser, resultComp) => {
-    if (resultComp < resultUser) {
-        console.log('Total Winner -> User');
-        document.getElementById("win").style.display = "block";
-    } else if (resultComp > resultUser) {
-        console.log('Total Winner -> Computer');
-        document.getElementById("lose").style.display = "block";
-    } else {
-        console.log('Draw');
-        document.getElementById("draw").style.display = "block";
-    }
-};
-
-// Function to check who wins the game round, 
+// Function to check who wins the game round 
 let check = (total) => {
     if (userChoice === computerChoice) {
         resultUserInput.innerText = resultUser;
@@ -134,71 +102,109 @@ let check = (total) => {
         whoWinTheRoundInput.innerText = `It was a draw! You both chose ${userChoice}`;
         roundsNow += 1;
         roundNowInput.innerText = roundsNow;
-        roundLimit(roundsNow, total);
+        roundLimit(roundsNow, total, resultUser, resultComp);
     }
     if ((rules[0].choice === userChoice) && (rules[0].beats === computerChoice)){
             resultUser += 1;
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
-            whoWinTheRoundInput.innerText = `${userChoice} (user) beats ${computerChoice} (comp). You win!`;
+            whoWinTheRoundInput.innerText = `${userChoice} (user) beats ${computerChoice} (comp). You win this round!`;
             roundsNow += 1;
             roundNowInput.innerText = roundsNow;
-            roundLimit(roundsNow, total);
+            roundLimit(roundsNow, total, resultUser, resultComp);
     }
     if ((rules[0].choice === computerChoice) && (rules[0].beats === userChoice
         )){
             resultComp += 1;
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
-            whoWinTheRoundInput.innerText = `${computerChoice} (comp) beats ${userChoice} (user). You lose!`;
+            whoWinTheRoundInput.innerText = `${computerChoice} (comp) beats ${userChoice} (user). You lose this round!`;
             roundsNow += 1;
             roundNowInput.innerText = roundsNow;
-            roundLimit(roundsNow, total);
+            roundLimit(roundsNow, total, resultUser, resultComp);
     }
     if ((rules[1].choice === userChoice) && (rules[1].beats === computerChoice)){
             resultUser +=1;
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
-            whoWinTheRoundInput.innerText = `${userChoice} (user) beats ${computerChoice} (comp). You win!`;
+            whoWinTheRoundInput.innerText = `${userChoice} (user) beats ${computerChoice} (comp). You win this round!`;
             roundsNow += 1;
             roundNowInput.innerText = roundsNow;
-            roundLimit(roundsNow, total);
+            roundLimit(roundsNow, total, resultUser, resultComp);
     }
     if ((rules[1].choice === computerChoice) && (rules[1].beats === userChoice
         )){
             resultComp +=1;
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
-            whoWinTheRoundInput.innerText = `${computerChoice} (comp) beats ${userChoice} (user). You lose!`;
+            whoWinTheRoundInput.innerText = `${computerChoice} (comp) beats ${userChoice} (user). You lose this round!`;
             roundsNow += 1;
             roundNowInput.innerText = roundsNow;
-            roundLimit(roundsNow, total);
+            roundLimit(roundsNow, total, resultUser, resultComp);
     }
     if ((rules[2].choice === userChoice) && (rules[2].beats === computerChoice)){
             resultUser += 1;
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
-            whoWinTheRoundInput.innerText = `${userChoice} (user) beats ${computerChoice} (comp). You win!`;
+            whoWinTheRoundInput.innerText = `${userChoice} (user) beats ${computerChoice} (comp). You win this round!`;
             roundsNow += 1;
             roundNowInput.innerText = roundsNow;
-            roundLimit(roundsNow, total);
+            roundLimit(roundsNow, total, resultUser, resultComp);
     }
     if ((rules[2].choice === computerChoice) && (rules[2].beats === userChoice
         )){
             resultComp += 1;
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
-            whoWinTheRoundInput.innerText = `${computerChoice} (comp) beats ${userChoice} (user). You lose!`;
+            whoWinTheRoundInput.innerText = `${computerChoice} (comp) beats ${userChoice} (user). You lose this round!`;
             roundsNow += 1;
             roundNowInput.innerText = roundsNow;
-            roundLimit(roundsNow, total);
+            roundLimit(roundsNow, total, resultUser, resultComp);
     }
 
     return {
         'resultUser': resultUser, 
-        'resultComp': resultComp,
+        'resultComp': resultComp,   
     }
 };
+
+
+let winner = (resultUser, resultComp) => {
+    let userWin = resultComp < resultUser;
+    let compWin = resultComp > resultUser;
+    if (userWin === true) {
+        console.log('Total Winner -> User');
+        document.querySelector("#win").style.display = "block";
+        document.querySelector('#draw').innerHTML = resultUser;
+    } else if (compWin === true) {
+        console.log('Total Winner -> Computer');
+        document.querySelector("#lose").style.display = "block";
+        document.querySelector('#draw').innerHTML = resultComp;
+    } else {
+        console.log('Draw');
+        document.querySelector("#draw").style.display = "block";
+        // document.querySelector('#draw').innerHTML = resultUser;
+    }
+};
+
+// Game Options
+rock.addEventListener('click', () => {
+    userChoice = 'rock'
+    computerChoice = options[Math.floor(Math.random() * 3)];
+    check(total);
+});
+
+paper.addEventListener('click', () => {
+    userChoice = 'paper';
+    computerChoice = options[Math.floor(Math.random() * 3)];
+    check(total);
+});
+
+scissor.addEventListener('click', () => {
+    userChoice = 'scissors';
+    computerChoice = options[Math.floor(Math.random() * 3)];
+    check(total);
+});
 
 // Reload the website
 reset.addEventListener("click", () => {

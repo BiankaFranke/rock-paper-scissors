@@ -1,5 +1,5 @@
 // JS Check
-console.log('it works');
+// console.log('it works');
 
 // Declaration
 let roundsNow = 0;

@@ -20,6 +20,7 @@ let whoWinTheRoundInput = document.querySelector("#whoWinTheRound");
 const rock = document.querySelector("#btn1");
 const paper = document.querySelector("#btn2");
 const scissor = document.querySelector("#btn3");
+const doTheReset = document.querySelectorAll('#reset1, #reset2, #reset3, #reset4');
 // let randomChoice = Math.floor(Math.random() * 3); 
 
 // Game Rules - Who will win? -> Objects
@@ -80,16 +81,17 @@ begin.addEventListener("click", (event) => {
     document.querySelector("#doppelpunkt").style.display = "block";
     document.querySelector("#resultUser").style.display = "block";
     document.querySelector("#resultComp").style.display = "block";
+    document.querySelector("#headlineResultUser").style.display = "block";
+    document.querySelector("#headlineResultComp").style.display = "block";
 });
 
 // Check if limit is reached
 let roundLimit = (roundsNow, total, resultUser, resultComp) => {
     if (roundsNow < total) {
-        roundsNow +=1;
+        roundsNow += 1;
         console.log('...Next round...');
     } else {
         console.log('...Game Over...');
-        document.querySelector("#end").style.display = "block";
         winner(resultUser, resultComp);
     }
 };
@@ -109,6 +111,8 @@ let check = (total) => {
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
             whoWinTheRoundInput.innerText = `${userChoice} (user) beats ${computerChoice} (comp). You win this round!`;
+            document.querySelector("#btn1").style.textShadow = "#a2c11c 0 0 12px";
+            document.querySelector("#btn3").style.textShadow = "#dc2f2f 0 0 12px";
             roundsNow += 1;
             roundNowInput.innerText = roundsNow;
             roundLimit(roundsNow, total, resultUser, resultComp);
@@ -119,6 +123,8 @@ let check = (total) => {
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
             whoWinTheRoundInput.innerText = `${computerChoice} (comp) beats ${userChoice} (user). You lose this round!`;
+            document.querySelector("#btn1").style.textShadow = "#a2c11c 0 0 12px";
+            document.querySelector("#btn3").style.textShadow = "#dc2f2f 0 0 12px";
             roundsNow += 1;
             roundNowInput.innerText = roundsNow;
             roundLimit(roundsNow, total, resultUser, resultComp);
@@ -128,6 +134,8 @@ let check = (total) => {
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
             whoWinTheRoundInput.innerText = `${userChoice} (user) beats ${computerChoice} (comp). You win this round!`;
+            document.querySelector("#btn2").style.textShadow = "#a2c11c 0 0 12px";
+            document.querySelector("#btn1").style.textShadow = "#dc2f2f 0 0 12px";
             roundsNow += 1;
             roundNowInput.innerText = roundsNow;
             roundLimit(roundsNow, total, resultUser, resultComp);
@@ -138,6 +146,8 @@ let check = (total) => {
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
             whoWinTheRoundInput.innerText = `${computerChoice} (comp) beats ${userChoice} (user). You lose this round!`;
+            document.querySelector("#btn2").style.textShadow = "#a2c11c 0 0 12px";
+            document.querySelector("#btn1").style.textShadow = "#dc2f2f 0 0 12px";
             roundsNow += 1;
             roundNowInput.innerText = roundsNow;
             roundLimit(roundsNow, total, resultUser, resultComp);
@@ -147,6 +157,8 @@ let check = (total) => {
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
             whoWinTheRoundInput.innerText = `${userChoice} (user) beats ${computerChoice} (comp). You win this round!`;
+            document.querySelector("#btn3").style.textShadow = "#a2c11c 0 0 12px";
+            document.querySelector("#btn2").style.textShadow = "#dc2f2f 0 0 12px";
             roundsNow += 1;
             roundNowInput.innerText = roundsNow;
             roundLimit(roundsNow, total, resultUser, resultComp);
@@ -157,6 +169,8 @@ let check = (total) => {
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
             whoWinTheRoundInput.innerText = `${computerChoice} (comp) beats ${userChoice} (user). You lose this round!`;
+            document.querySelector("#btn3").style.textShadow = "#a2c11c 0 0 12px";
+            document.querySelector("#btn2").style.textShadow = "#dc2f2f 0 0 12px";
             roundsNow += 1;
             roundNowInput.innerText = roundsNow;
             roundLimit(roundsNow, total, resultUser, resultComp);
@@ -168,49 +182,57 @@ let check = (total) => {
     }
 };
 
-
+// Final Winner Check and Banner
 let winner = (resultUser, resultComp) => {
     let userWin = resultComp < resultUser;
     let compWin = resultComp > resultUser;
     if (userWin === true) {
         console.log('Total Winner -> User');
         document.querySelector("#win").style.display = "block";
-        document.querySelector('#draw').innerHTML = resultUser;
+        document.querySelector("#winnerUser").innerText = `${resultUser} : ${resultComp}`;
     } else if (compWin === true) {
         console.log('Total Winner -> Computer');
         document.querySelector("#lose").style.display = "block";
-        document.querySelector('#draw').innerHTML = resultComp;
+        document.querySelector("#winnerComp").innerText = `${resultUser} : ${resultComp}`;
     } else {
         console.log('Draw');
         document.querySelector("#draw").style.display = "block";
-        // document.querySelector('#draw').innerHTML = resultUser;
+        document.querySelector("#winnerNobody").innerText = `${resultUser} : ${resultComp}`;
     }
 };
+
+// Reset Text shadow
+let resetShadow = () => {
+    document.getElementById("btn3").style.textShadow = "unset";
+    document.getElementById("btn2").style.textShadow = "unset";
+    document.getElementById("btn1").style.textShadow = "unset";
+}
 
 // Game Options
 rock.addEventListener('click', () => {
     userChoice = 'rock'
     computerChoice = options[Math.floor(Math.random() * 3)];
     check(total);
+    setTimeout(resetShadow, 1100);
 });
 
 paper.addEventListener('click', () => {
     userChoice = 'paper';
     computerChoice = options[Math.floor(Math.random() * 3)];
     check(total);
+    setTimeout(resetShadow, 1100);
 });
 
 scissor.addEventListener('click', () => {
     userChoice = 'scissors';
     computerChoice = options[Math.floor(Math.random() * 3)];
     check(total);
+    setTimeout(resetShadow, 1100);
 });
 
 // Reload the website
-reset.addEventListener("click", () => {
+doTheReset.forEach(newStart => {
+  newStart.addEventListener('click', () => {
     document.location.reload();
   });
-
-resetTwo.addEventListener("click", () => {
-    document.location.reload();
 });

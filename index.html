@@ -64,10 +64,15 @@
 
       <section id="result">
         <div id="totalResult">
-          <!-- <p id="inputResult"></p> -->
-          <p id="resultUser">0</p>
+          <div id="userResultTotal">
+            <p id="resultUser">0</p>
+            <p id="headlineResultUser">User</p>
+          </div>
           <p id="doppelpunkt">:</p>
-          <p id="resultComp">0</p>
+          <div id="compResultTotal">
+            <p id="resultComp">0</p>
+            <p id="headlineResultComp">Comp</p>
+          </div>
         </div>
       </section>
 
@@ -82,15 +87,26 @@
       </section>
 
       <section id="bannerResult">
-        <p id="end" class="banner"><button id="resetTwo">restart</button></p>
-        <p id="win" class="banner">You Win!</p>
-        <p id="lose" class="banner">You Lose!</p>
-        <p id="draw" class="banner">It was a draw!</p>
+        <!-- <p id="end" class="banner"><button class="resetTwo">restart</button></p> -->
+        <p id="win" class="banner">
+          You Win! <span id="winnerUser"></span>
+          <button id="reset2">restart</button>
+        </p>
+        <p id="lose" class="banner">
+          You Lose!
+          <span id="winnerComp"></span>
+          <button id="reset3">restart</button>
+        </p>
+        <p id="draw" class="banner">
+          It was a draw!
+          <span id="winnerNobody"></span>
+          <button id="reset4">restart</button>
+        </p>
       </section>
     </main>
 
     <footer>
-      <button id="reset">restart</button>
+      <button id="reset1">restart</button>
     </footer>
     <script src="./assets/js/main.js"></script>
   </body>

@@ -27,17 +27,17 @@ const doTheReset = document.querySelectorAll('#reset1, #reset2, #reset3, #reset4
 let rules = [
     {
         choice: 'rock',
-        draw: 'rock',
+        // draw: 'rock',
         beats: 'scissors'
     },
     {
         choice: 'paper',
-        draw: 'paper',
+        // draw: 'paper',
         beats: 'rock'
     },
     {
         choice: 'scissors',
-        draw: 'scissors',
+        // draw: 'scissors',
         beats: 'paper'
     }
 ];
@@ -106,7 +106,7 @@ let check = (total) => {
         roundNowInput.innerText = roundsNow;
         roundLimit(roundsNow, total, resultUser, resultComp);
     }
-    if ((rules[0].choice === userChoice) && (rules[0].beats === computerChoice)){
+    else if ((rules[0].choice === userChoice) && (rules[0].beats === computerChoice)){
             resultUser += 1;
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
@@ -117,7 +117,7 @@ let check = (total) => {
             roundNowInput.innerText = roundsNow;
             roundLimit(roundsNow, total, resultUser, resultComp);
     }
-    if ((rules[0].choice === computerChoice) && (rules[0].beats === userChoice
+    else if ((rules[0].choice === computerChoice) && (rules[0].beats === userChoice
         )){
             resultComp += 1;
             resultUserInput.innerText = resultUser;
@@ -129,7 +129,7 @@ let check = (total) => {
             roundNowInput.innerText = roundsNow;
             roundLimit(roundsNow, total, resultUser, resultComp);
     }
-    if ((rules[1].choice === userChoice) && (rules[1].beats === computerChoice)){
+    else if ((rules[1].choice === userChoice) && (rules[1].beats === computerChoice)){
             resultUser +=1;
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
@@ -140,7 +140,7 @@ let check = (total) => {
             roundNowInput.innerText = roundsNow;
             roundLimit(roundsNow, total, resultUser, resultComp);
     }
-    if ((rules[1].choice === computerChoice) && (rules[1].beats === userChoice
+    else if ((rules[1].choice === computerChoice) && (rules[1].beats === userChoice
         )){
             resultComp +=1;
             resultUserInput.innerText = resultUser;
@@ -152,7 +152,7 @@ let check = (total) => {
             roundNowInput.innerText = roundsNow;
             roundLimit(roundsNow, total, resultUser, resultComp);
     }
-    if ((rules[2].choice === userChoice) && (rules[2].beats === computerChoice)){
+    else if ((rules[2].choice === userChoice) && (rules[2].beats === computerChoice)){
             resultUser += 1;
             resultUserInput.innerText = resultUser;
             resultCompInput.innerText = resultComp;
@@ -163,7 +163,7 @@ let check = (total) => {
             roundNowInput.innerText = roundsNow;
             roundLimit(roundsNow, total, resultUser, resultComp);
     }
-    if ((rules[2].choice === computerChoice) && (rules[2].beats === userChoice
+    else if ((rules[2].choice === computerChoice) && (rules[2].beats === userChoice
         )){
             resultComp += 1;
             resultUserInput.innerText = resultUser;
@@ -184,13 +184,11 @@ let check = (total) => {
 
 // Final Winner Check and Banner
 let winner = (resultUser, resultComp) => {
-    let userWin = resultComp < resultUser;
-    let compWin = resultComp > resultUser;
-    if (userWin === true) {
+    if (resultComp < resultUser) {
         console.log('Total Winner -> User');
         document.querySelector("#win").style.display = "block";
         document.querySelector("#winnerUser").innerText = `${resultUser} : ${resultComp}`;
-    } else if (compWin === true) {
+    } else if (resultComp > resultUser) {
         console.log('Total Winner -> Computer');
         document.querySelector("#lose").style.display = "block";
         document.querySelector("#winnerComp").innerText = `${resultUser} : ${resultComp}`;

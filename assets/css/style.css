@@ -149,3 +149,73 @@ label {
         text-shadow: none;
     }
 }
+
+/* Media queries mobile and tablet */
+
+@media (max-width: 992px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    .optionBtn {
+        font-size: 7rem;
+    }
+
+    label {
+        padding-right: 0.2rem;
+    }
+
+    #begin {
+        font-size: 0.8rem;
+        padding: 0.2rem;
+    }
+
+    #rounds {
+        padding: 1rem;
+    }
+
+    #totalResult, #roundNowTotal {
+        font-size: 3rem;
+    }
+
+    .banner{
+        font-size: 2.5rem;
+        height: 15vh;
+        transform: translateY(-35vh);
+    }
+
+    .banner span {
+        font-size: 2rem;
+    }
+
+    #reset2, #reset3, #reset4 {
+        font-size: 2rem;
+    }
+    
+}
+  
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    .optionBtn {
+        font-size: 5rem;
+    }
+
+    .banner{
+        transform: translateY(-30vh);
+    }
+}

@@ -203,9 +203,9 @@ let winner = (resultUser, resultComp) => {
 
 // Reset Text shadow
 let resetShadow = () => {
-    document.getElementById("btn3").style.textShadow = "unset";
-    document.getElementById("btn2").style.textShadow = "unset";
-    document.getElementById("btn1").style.textShadow = "unset";
+    document.querySelector("#btn3").style.textShadow = "unset";
+    document.querySelector("#btn2").style.textShadow = "unset";
+    document.querySelector("#btn1").style.textShadow = "unset";
 }
 
 // Game Options
